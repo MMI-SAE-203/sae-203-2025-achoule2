@@ -35,8 +35,49 @@ export async function getParticipantsSortedByName() {
     }
 }
 
+export async function getFilmById(id) {
+    try {
+        return await pb.collection('films').getOne(id);
+    } catch (error) {
+        console.error(`❌ Erreur lors de la récupération du film avec ID ${id} :`, error);
+        return null;
+    }
+}
 
-export async function getFilmById() {
+export async function getFilmById(id) {
+    try {
+        console.log(`📡 Récupération du film avec ID: ${id}`);
+
+        // On récupère le film avec l'invité associé
+        const film = await pb.collection('films').getOne(id, { expand: 'invite' });
+
+        console.log(`✅ Film trouvé :`, film);
+        return film;
+    } catch (error) {
+        console.error(`❌ Erreur lors de la récupération du film avec ID ${id} :`, error);
+        return null;
+    }
+}
+
+
+
+export async function getActivitesSortedByDate() {
+    try {
+        return await pb.collection('activites').getFullList({
+            sort: 'date',
+            expand: 'invite' // IMPORTANT : Ajoute "expand" pour inclure l'invité
+        });
+    } catch (error) {
+        console.error("❌ Erreur lors de la récupération des activités :", error);
+        return [];
+    }
+}
+
+
+
+
+
+/* export async function getFilmById() {
     try {
         return await pb.collection('films').getOne(filmId);
     } catch (error) {
@@ -94,4 +135,4 @@ export async function getActivitesByAnimateurNom(nomAnimateur) {
         console.error(`❌ Erreur lors de la récupération des activités pour l'animateur (Nom: ${nomAnimateur}) :`, error);
         return [];
     }
-}
+} */
