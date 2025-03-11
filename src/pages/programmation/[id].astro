@@ -1,0 +1,81 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getFilmById, getFilmsSortedByDate } from "../../../backend.mjs";
+
+// Fonction requise pour les routes dynamiques
+export async function getStaticPaths() {
+    const films = await getFilmsSortedByDate(); // Récupère tous les films
+    return films.map(film => ({
+        params: { id: film.id }
+    }));
+}
+
+const { id } = Astro.params;
+const film = await getFilmById(id);
+
+if (!film) {
+  throw new Error("Film non trouvé !");
+}
+
+// Générer l'URL complète de l'affiche
+const afficheUrl = `http://127.0.0.1:8090/api/files/films/${film.id}/${film.affiche}`;
+
+// Vérifier si un invité est associé
+const invite = film.expand?.invite;
+---
+
+<Layout>
+  <section class="max-w-4xl mx-auto py-12 px-6 text-white">
+    <!-- Affiche du film -->
+    <img src={afficheUrl} alt={film.titre} class="w-full h-96 object-cover rounded-lg shadow-md">
+    
+    <!-- Titre du film -->
+    <div class="mt-6 bg-gray-900 p-4 rounded-lg shadow-lg">
+    <h1 class="text-4xl font-bold mt-6">{film.titre}</h1>
+    </div>
+
+    <!-- Synopsis -->
+    <div class="mt-6 bg-gray-900 p-4 rounded-lg shadow-lg">
+    <p class="mt-4 text-lg">{film.description}</p>
+    </div>
+
+    <!-- Bande-annonce (YouTube / Vimeo) -->
+    {film.bande_annonce && (
+      <div class="mt-6 bg-gray-900 p-4 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold">Bande-annonce</h2>
+        <iframe 
+          class="w-full h-100 mt-4 rounded-lg shadow-md"
+          src={film.bande_annonce.replace("watch?v=", "embed/")}
+          frameborder="0" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    )}
+
+    <!-- Infos techniques -->
+    <div class="mt-6 bg-gray-900 p-4 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold">Infos techniques</h2>
+      <p class="text-gray-400 mt-2"><strong>Durée :</strong> {film.duree} minutes</p>
+      <p class="text-gray-400 mt-2"><strong>Langue :</strong> {film.langue}</p>
+      <p class="text-gray-400 mt-2"><strong>Production :</strong> {film.production}</p>
+    </div>
+
+    <!-- Invité associé -->
+    {invite && (
+      <div class="mt-6 bg-gray-800 p-4 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold">Invité associé</h2>
+        <p class="text-gray-300 mt-2"><strong>Nom :</strong> {invite.nom}</p>
+        <p class="text-gray-300"><strong>Rôle :</strong> {invite.role}</p>
+      </div>
+    )}
+
+    <!-- Bouton de retour -->
+    <a href="/programmation" class="mt-6 inline-block bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-500 transition">
+      ← Retour à la programmation
+    </a>
+  </section>
+</Layout>
+
+
+
+
