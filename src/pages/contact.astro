@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <section class="max-w-6xl mx-auto py-20 px-6 text-white">
+    <h1 class="text-5xl font-bold text-center mb-12 mt-12 text-purple-400">Contact</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <div class="md:col-span-2 bg-gray-900 p-6 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold text-purple-400 mb-6">Envoyez-nous un message</h2>
+        <form action="#" method="POST" class="space-y-4">
+          <div>
+            <label for="name" class="block font-medium">Nom</label>
+            <input type="text" id="name" name="name" class="w-full bg-gray-800 p-3 rounded-lg border border-gray-700 focus:ring focus:ring-purple-500">
+          </div>
+          <div>
+            <label for="email" class="block font-medium">Email</label>
+            <input type="email" id="email" name="email" class="w-full bg-gray-800 p-3 rounded-lg border border-gray-700 focus:ring focus:ring-purple-500">
+          </div>
+          <div>
+            <label for="subject" class="block font-medium">Sujet</label>
+            <input type="text" id="subject" name="subject" class="w-full bg-gray-800 p-3 rounded-lg border border-gray-700 focus:ring focus:ring-purple-500">
+          </div>
+          <div>
+            <label for="message" class="block font-medium">Message</label>
+            <textarea id="message" name="message" rows="5" class="w-full bg-gray-800 p-3 rounded-lg border border-gray-700 focus:ring focus:ring-purple-500"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-lg transition">Envoyer</button>
+        </form>
+      </div>
+
+      
+      <div class="space-y-6">
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+          <h2 class="text-3xl font-bold text-purple-400 mb-4">Coordonnées</h2>
+          <p><span class="font-bold">📧 Email :</span> cineechos@gmail.com</p>
+          <p><span class="font-bold">📞 Téléphone :</span> 06 25 48 69 54</p>
+          <p><span class="font-bold">📍 Adresse :</span> 12 rue du Festival, Héricourt</p>
+        </div>
+
+        
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg text-center">
+          <h2 class="text-3xl font-bold text-purple-400 mb-4">Suivez-nous</h2>
+          <div class="flex justify-center space-x-6">
+            <a href="#" class="hover:opacity-75"><img src="/facebook.png" alt="Facebook" class="w-10 h-10"></a>
+            <a href="#" class="hover:opacity-75"><img src="/Twitter.png" alt="Twitter" class="w-10 h-10"></a>
+            <a href="#" class="hover:opacity-75"><img src="/insta.png" alt="Instagram" class="w-10 h-10"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+

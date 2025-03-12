@@ -1,0 +1,90 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <section class="max-w-7xl mx-auto py-20 px-8 text-white">  <!-- Ajout de py-20 pour plus d'espace en haut -->
+
+    <h1 class="text-5xl font-bold text-center mb-12 text-purple-400 mt-10">🎬 Infos Pratiques</h1>  <!-- Ajout de mt-10 -->
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+      
+      <div class="bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-800 hover:scale-105 transition">
+        <h2 class="text-3xl font-bold text-yellow-400 mb-4">Tarifs</h2>
+        <ul class="space-y-3 text-gray-300">
+          <li><strong class="text-white">🎫 Billet unique :</strong> 10€</li>
+          <li><strong class="text-white">🎟️ Pass 3 jours :</strong> 25€</li>
+          <li><strong class="text-white">🎬 Abonnement illimité :</strong> 80€</li>
+          <li><strong class="text-white">🧑‍🎓 Réductions :</strong> Étudiants, -18 ans, demandeurs d’emploi (-30%)</li>
+        </ul>
+      </div>
+
+      
+      <div class="bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-800 hover:scale-105 transition">
+        <h2 class="text-3xl font-bold text-green-400 mb-4">Lieux</h2>
+        <p class="text-gray-300 mb-4">Les projections auront lieu dans ces lieux emblématiques :</p>
+        <ul class="space-y-3 text-gray-300">
+          <li>🎭 <strong class="text-white">Grand Théâtre :</strong> 12, rue du Festival</li>
+          <li>🎥 <strong class="text-white">Cinéma Lumière :</strong> Place des Étoiles</li>
+          <li>🎶 <strong class="text-white">Salle des Concerts :</strong> Quai des Arts</li>
+        </ul>
+      </div>
+
+      
+      <div class="bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-800 hover:scale-105 transition">
+        <h2 class="text-3xl font-bold text-blue-400 mb-4">Hébergement</h2>
+        <p class="text-gray-300 mb-4">Des solutions adaptées à tous :</p>
+        <ul class="space-y-3 text-gray-300">
+          <li>🏨 <strong class="text-white">Hôtel Festival :</strong> 200m du centre - 80€/nuit</li>
+          <li>⛺ <strong class="text-white">Camping du Festival :</strong> Tentes et caravanes - 10€/nuit</li>
+          <li>🏠 <strong class="text-white">Airbnb & partenaires :</strong> Réservation en ligne</li>
+        </ul>
+      </div>
+
+      
+      <div class="bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-800 hover:scale-105 transition">
+        <h2 class="text-3xl font-bold text-red-400 mb-4">Transport</h2>
+        <ul class="space-y-3 text-gray-300">
+          <li>🚄 <strong class="text-white">Train :</strong> Gare Centrale à 10 min à pied</li>
+          <li>🚗 <strong class="text-white">Voiture :</strong> Parkings gratuits à proximité</li>
+          <li>🚕 <strong class="text-white">Navettes gratuites :</strong> Entre les lieux du festival</li>
+        </ul>
+      </div>
+
+    </div>
+
+    
+    <div class="bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-800 mt-10">
+      <h2 class="text-3xl font-bold text-purple-400 mb-4">FAQ</h2>
+      <div class="space-y-4">
+        <details class="group">
+          <summary class="cursor-pointer text-white font-semibold bg-gray-800 p-3 rounded-lg group-hover:bg-gray-700 transition">🎫 Où acheter les billets ?</summary>
+          <p class="text-gray-300 mt-2 px-4">Les billets sont disponibles en ligne et sur place aux points de vente officiels.</p>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-white font-semibold bg-gray-800 p-3 rounded-lg group-hover:bg-gray-700 transition">🍿 Peut-on manger dans les salles ?</summary>
+          <p class="text-gray-300 mt-2 px-4">La consommation est autorisée uniquement dans les espaces dédiés.</p>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer text-white font-semibold bg-gray-800 p-3 rounded-lg group-hover:bg-gray-700 transition">🕘 À quelle heure ouvrent les portes ?</summary>
+          <p class="text-gray-300 mt-2 px-4">Les portes ouvrent 30 minutes avant chaque séance.</p>
+        </details>
+      </div>
+    </div>
+
+    
+    <div class="bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-800 mt-10">
+      <h2 class="text-3xl font-bold text-cyan-400 mb-4">Localisation</h2>
+      <iframe 
+        class="w-full h-96 rounded-lg shadow-lg border border-gray-700"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26848.85897117134!2d6.726176!3d47.576205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479238f3de78ff0b%3A0x408ab2ae4bcfc00!2sH%C3%A9ricourt%2C%2070430%20France!5e0!3m2!1sfr!2sfr!4v1645177896412!5m2!1sfr!2sfr" 
+        allowfullscreen="" 
+        loading="lazy">
+      </iframe>
+    </div>
+
+  </section>
+</Layout>
+
+

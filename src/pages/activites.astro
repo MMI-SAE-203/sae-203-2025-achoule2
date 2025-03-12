@@ -4,7 +4,7 @@ import { getActivitesSortedByDate } from "../../backend.mjs";
 
 const activites = await getActivitesSortedByDate();
 
-// Fonction pour récupérer l'URL de l'image depuis PocketBase
+
 function getImageUrl(activite) {
   return `http://127.0.0.1:8090/api/files/activites/${activite.id}/${activite.image}`;
 }
