@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getFilmsSortedByDate, getActivitesSortedByDate } from "../../backend.mjs";
+
+const films = await getFilmsSortedByDate();
+const activites = await getActivitesSortedByDate();
+
+function getImageUrl(item, type) {
+  return `http://127.0.0.1:8090/api/files/${type}/${item.id}/${item.image || item.affiche}`;
+}
+---
+
+<Layout>
+  <section class="max-w-7xl mx-auto py-12 px-6 text-white">
+    
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-extrabold tracking-wide text-gray-100">
+        <span class="inline-block bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
+          🎬 Programme du Festival
+        </span>
+      </h1>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {films.map((film) => (
+        <a href={`/programmation/${film.id}`} class="block bg-gray-900 text-white rounded-lg shadow-lg p-6 hover:scale-105 transition transform duration-300 ease-in-out">
+          <div class="relative">
+            <img src={getImageUrl(film, "films")} alt={film.titre} class="w-full h-64 object-cover rounded-lg">
+            <span class="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-lg text-sm flex items-center gap-2">
+              🎥 Film
+            </span>
+          </div>
+          <h2 class="text-2xl font-bold mt-4 text-gray-100">{film.titre}</h2>
+          <p class="text-gray-400 mt-2 flex items-center gap-2">📅 {new Date(film.date_projection).toLocaleDateString()}</p>
+          <p class="text-gray-300 mt-2">{film.description}</p>
+        </a>
+      ))}
+
+      {activites.map((activite) => (
+        <a href={`/activites/${activite.id}`} class="block bg-gray-900 text-white rounded-lg shadow-lg p-6 hover:scale-105 transition transform duration-300 ease-in-out">
+          <div class="relative">
+            <img src={getImageUrl(activite, "activites")} alt={activite.titre} class="w-full h-64 object-cover rounded-lg">
+            <span class="absolute top-3 right-3 bg-blue-500 text-white px-3 py-1 rounded-lg text-sm flex items-center gap-2">
+              🎭 Activité
+            </span>
+          </div>
+          <h2 class="text-2xl font-bold mt-4 text-gray-100">{activite.titre}</h2>
+          <p class="text-gray-400 mt-2 flex items-center gap-2">📅 {new Date(activite.date).toLocaleDateString()}</p>
+          <p class="text-gray-400 mt-2">📍 {activite.lieu}</p>
+          <p class="text-gray-300 mt-2">{activite.description}</p>
+        </a>
+      ))}
+    </div>
+
+  </section>
+</Layout>
