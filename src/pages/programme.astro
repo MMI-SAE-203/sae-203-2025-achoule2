@@ -6,7 +6,7 @@ const films = await getFilmsSortedByDate();
 const activites = await getActivitesSortedByDate();
 
 function getImageUrl(item, type) {
-  return `http://127.0.0.1:8090/api/files/${type}/${item.id}/${item.image || item.affiche}`;
+  return `https://pocketbasesae203.adrienchoulet.fr:443/api/files/${type}/${item.id}/${item.image || item.affiche}`;
 }
 ---
 

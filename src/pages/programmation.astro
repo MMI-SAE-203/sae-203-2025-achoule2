@@ -5,7 +5,7 @@ import { getFilmsSortedByDate } from "../../backend.mjs";
 const films = await getFilmsSortedByDate();
 
 function getAfficheUrl(film) {
-  return `http://127.0.0.1:8090/api/files/films/${film.id}/${film.affiche}`;
+  return `https://pocketbasesae203.adrienchoulet.fr:443/api/files/films/${film.id}/${film.affiche}`;
 }
 
 

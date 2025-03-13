@@ -1,6 +1,6 @@
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('http://127.0.0.1:8090');
+const pb = new PocketBase("https://pocketbasesae203.adrienchoulet.fr:443");
 
 
 export async function getFilmsSortedByDate() {
